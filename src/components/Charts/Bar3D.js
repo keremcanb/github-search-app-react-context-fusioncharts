@@ -1,7 +1,5 @@
 import React from 'react';
 
-const Bar3D = () => {
-  return <div>chart</div>;
-};
+const Bar3D = () => <div>chart</div>;
 
 export default Bar3D;

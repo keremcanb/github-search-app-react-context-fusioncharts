@@ -1,6 +1,9 @@
 {
   "extends": ["wesbos"],
   "rules": {
+    "arrow-body-style": 0,
+    "import/named": 0,
+    "no-unused-vars": 0,
     "default-case": 0,
     "react-hooks/exhaustive-deps": 0,
     "react/no-danger": 0,
