@@ -1,8 +1,9 @@
 {
   "extends": ["wesbos"],
   "rules": {
+    "react/button-has-type": 0,
     "no-use-before-define": 0,
-    // "arrow-body-style": 0,
+    "arrow-body-style": 0,
     "import/named": 0,
     "no-unused-vars": 0,
     "default-case": 0,

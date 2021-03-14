@@ -4,8 +4,17 @@ import styled from 'styled-components';
 import loginImg from '../images/login-img.svg';
 
 const Login = () => {
-  return <h2>login page</h2>;
+  return (
+    <Wrapper>
+      <div className="container">
+        <img src={loginImg} alt="github user" />
+        <h1>github user</h1>
+        <button className="btn">Log In / Sign Up</button>
+      </div>
+    </Wrapper>
+  );
 };
+
 const Wrapper = styled.section`
   min-height: 100vh;
   display: grid;
@@ -22,4 +31,5 @@ const Wrapper = styled.section`
     margin-bottom: 1.5rem;
   }
 `;
+
 export default Login;

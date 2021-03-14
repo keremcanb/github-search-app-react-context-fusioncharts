@@ -28,4 +28,5 @@ const Wrapper = styled.section`
     margin-bottom: 1.5rem;
   }
 `;
+
 export default Error;
