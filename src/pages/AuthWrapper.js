@@ -3,9 +3,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
 import loadingGif from '../images/preloader.gif';
 
-function AuthWrapper() {
+const AuthWrapper = () => {
   return <h2>authwrapper component</h2>;
-}
+};
 
 const Wrapper = styled.section`
   min-height: 100vh;
