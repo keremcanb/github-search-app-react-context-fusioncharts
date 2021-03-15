@@ -1,6 +1,8 @@
 {
   "extends": ["wesbos"],
   "rules": {
+    "react/jsx-props-no-spreading": 0,
+    "camelcase": 0,
     "react/button-has-type": 0,
     "no-use-before-define": 0,
     "arrow-body-style": 0,
