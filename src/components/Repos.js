@@ -50,26 +50,35 @@ const Repos = () => {
     .slice(0, 5);
 
   // Stars & Forks
-  const { stars, forks } = repos.reduce(
+  let { stars, forks } = repos.reduce(
     (total, item) => {
       // eslint-disable-next-line no-shadow
       const { stargazers_count, name, forks } = item;
 
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+
+      total.forks[forks] = { label: name, value: forks };
+
       return total;
     },
+    // Return object with 2 properties as objects
     {
       stars: {},
       forks: {}
     }
   );
 
+  // Convert to array, get last 5 & reverse
+  stars = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
+
   return (
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D data={mostUsed} />
-        <Column3D data={mostUsed} />
+        <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />
-        <Bar3D data={mostPopular} />
+        <Bar3D data={forks} />
       </Wrapper>
     </section>
   );
