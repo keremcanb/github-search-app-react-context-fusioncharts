@@ -8,28 +8,14 @@ ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 const ChartComponent = ({ data }) => {
   const chartConfigs = {
-    type: 'pie2d',
+    type: 'pie3d',
     width: '100%',
-    height: '350',
+    height: '400',
     dataFormat: 'json',
     dataSource: {
       chart: {
         caption: 'Languages',
-        captionFontColor: '#102a42',
-        captionFontBold: 0,
-        captionFontSize: 20,
-        captionFont: 'Roboto',
-        baseFont: 'Open Sans',
-        baseFontSize: 16,
-        baseFontColor: '#617d98',
-        smartLineColor: '#617d98',
-        showShadow: 0,
-        showPlotBorder: 0,
-        paletteColors: '#2caeba, #5D62B5, #FFC533, #F2726F, #8d6e63, #1de9b6, #6E80CA',
-        use3DLighting: 0,
-        useDataPlotColorForLabels: 0,
-        bgColor: '#FFFFFF',
-        showBorder: 0,
+        theme: 'fusion',
         decimals: 0,
         pieRadius: '45%'
       },
