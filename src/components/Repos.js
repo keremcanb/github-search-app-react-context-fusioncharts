@@ -6,31 +6,37 @@ import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
 
-  // Calculate occurrence of each language & stars
+  // Calculate total occurrence of each language & stars from repos
+  // total: what we return (object), item: each item to iterate
   const languages = repos.reduce((total, item) => {
     const { language, stargazers_count } = item;
-
+    // Get rid of nulls
     if (!language) return total;
-
+    // If property(css, js etc) on the object does not exist:
     if (!total[language]) {
+      // Create object with value: 1 (first instance)
       total[language] = { label: language, value: 1, stars: stargazers_count };
     } else {
+      // If property on the object do exist:
       total[language] = {
+        // Copy all properties
         ...total[language],
+        // Overwrite value property with +1
         value: total[language].value + 1,
         stars: total[language].stars + stargazers_count
       };
     }
     return total;
+    // Return object from reduce (eg: 'css: 14')
   }, {});
 
   // Most used languages (convert to array)
   const mostUsed = Object.values(languages)
-    // Sort by highest value
+    // Sort by highest value first
     .sort((a, b) => {
       return b.value - a.value;
     })
-    // Show first 5 languages
+    // Show first 5 of most popular languages
     .slice(0, 5);
 
   // Most stars per language (convert to array)
@@ -42,6 +48,20 @@ const Repos = () => {
       return { ...item, value: item.stars };
     })
     .slice(0, 5);
+
+  // Stars & Forks
+  const { stars, forks } = repos.reduce(
+    (total, item) => {
+      // eslint-disable-next-line no-shadow
+      const { stargazers_count, name, forks } = item;
+
+      return total;
+    },
+    {
+      stars: {},
+      forks: {}
+    }
+  );
 
   return (
     <section className="section">
