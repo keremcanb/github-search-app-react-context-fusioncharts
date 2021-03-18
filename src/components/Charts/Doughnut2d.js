@@ -2,9 +2,9 @@ import React from 'react';
 import ReactFC from 'react-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Chart from 'fusioncharts/fusioncharts.charts';
-import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.candy';
+import CandyTheme from 'fusioncharts/themes/fusioncharts.theme.candy';
 
-ReactFC.fcRoot(FusionCharts, Chart);
+ReactFC.fcRoot(FusionCharts, Chart, CandyTheme);
 
 const ChartComponent = ({ data }) => {
   const chartConfigs = {

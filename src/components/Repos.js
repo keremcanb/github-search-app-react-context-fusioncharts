@@ -5,11 +5,9 @@ import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
-
   // Calculate total occurrence of each language & stars from repos
   // total: what we return (object), item: each item to iterate
-  const languages = repos.reduce((total, item) => {
-    const { language, stargazers_count } = item;
+  const languages = repos.reduce((total, { language, stargazers_count }) => {
     // Get rid of nulls
     if (!language) return total;
     // If property(css, js etc) on the object does not exist:
