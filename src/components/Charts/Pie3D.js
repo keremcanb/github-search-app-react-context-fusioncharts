@@ -22,7 +22,6 @@ const ChartComponent = ({ data }) => {
       data
     }
   };
-
   return <ReactFC {...chartConfigs} />;
 };
 

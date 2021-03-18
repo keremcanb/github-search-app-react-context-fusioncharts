@@ -30,7 +30,6 @@ const Wrapper = styled.article`
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   position: relative;
-
   &::before {
     content: ' followers';
     position: absolute;
@@ -76,4 +75,5 @@ const Wrapper = styled.article`
     }
   }
 `;
+
 export default Followers;

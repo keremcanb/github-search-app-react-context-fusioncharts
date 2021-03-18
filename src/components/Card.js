@@ -114,4 +114,5 @@ const Wrapper = styled.article`
     }
   }
 `;
+
 export default Card;

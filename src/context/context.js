@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import mockUser from './mockData.js/mockUser';
-import mockRepos from './mockData.js/mockRepos';
-import mockFollowers from './mockData.js/mockFollowers';
 
 const rootUrl = 'https://api.github.com';
 
@@ -12,7 +9,6 @@ const GithubProvider = ({ children }) => {
   const [githubUser, setGithubUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [followers, setFollowers] = useState([]);
-
   const [requests, setRequests] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState({ show: false, msg: '' });
@@ -20,6 +16,7 @@ const GithubProvider = ({ children }) => {
   const searchGithubUser = async (user) => {
     toggleError();
     setIsLoading(true);
+
     const res = await axios(`${rootUrl}/users/${user}`).catch((err) => console.log(err));
 
     if (res) {
@@ -34,6 +31,7 @@ const GithubProvider = ({ children }) => {
           // eslint-disable-next-line no-shadow
           const [repos, followers] = results;
           const status = 'fulfilled';
+
           if (repos.status === status) {
             setRepos(repos.value.data);
           }
@@ -48,9 +46,29 @@ const GithubProvider = ({ children }) => {
     setIsLoading(false);
   };
 
-  function toggleError(show = false, msg = '') {
+  const checkRequests = () => {
+    axios(`${rootUrl}/rate_limit`)
+      .then(
+        ({
+          data: {
+            rate: { remaining }
+          }
+        }) => {
+          setRequests(remaining);
+
+          if (remaining === 0) {
+            toggleError(true, 'sorry, you have exceeded your hourly rate limit!');
+          }
+        }
+      )
+      .catch((err) => console.log(err));
+  };
+
+  const toggleError = (show = false, msg = '') => {
     setError({ show, msg });
-  }
+  };
+
+  useEffect(checkRequests, []);
 
   useEffect(() => {
     searchGithubUser('keremcanb');
