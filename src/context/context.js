@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const rootUrl = 'https://api.github.com';
-
 const GithubContext = React.createContext();
 
 const GithubProvider = ({ children }) => {
@@ -16,13 +15,10 @@ const GithubProvider = ({ children }) => {
   const searchGithubUser = async (user) => {
     toggleError();
     setIsLoading(true);
-
     const res = await axios(`${rootUrl}/users/${user}`).catch((err) => console.log(err));
-
     if (res) {
       setGithubUser(res.data);
       const { login, followers_url } = res.data;
-
       await Promise.allSettled([
         axios(`${rootUrl}/users/${login}/repos?per_page=100`),
         axios(`${followers_url}?per_page=100`)
@@ -31,7 +27,6 @@ const GithubProvider = ({ children }) => {
           // eslint-disable-next-line no-shadow
           const [repos, followers] = results;
           const status = 'fulfilled';
-
           if (repos.status === status) {
             setRepos(repos.value.data);
           }
@@ -63,7 +58,6 @@ const GithubProvider = ({ children }) => {
       )
       .catch((err) => console.log(err));
   };
-
   const toggleError = (show = false, msg = '') => {
     setError({ show, msg });
   };
