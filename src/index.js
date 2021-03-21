@@ -7,9 +7,16 @@ import { GithubProvider } from './context/context';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GithubProvider>
-      <App />
-    </GithubProvider>
+    <Auth0Provider
+      domain="dev-52towbdd.eu.auth0.com"
+      clientId="TaWQe2bKsrj6oJnzRc6TMwdwxJyNenyP"
+      redirectUri={window.location.origin}
+      cacheLocation="localstorage"
+    >
+      <GithubProvider>
+        <App />
+      </GithubProvider>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
