@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 
 const Repos = () => {
-  const { repos } = React.useContext(GithubContext);
+  const { repos } = useContext(GithubContext);
   // Calculate total occurrence of each language & stars from repos
   // total: what we return (object), item: each item to iterate
   const languages = repos.reduce((total, { language, stargazers_count }) => {
