@@ -15,7 +15,6 @@ const Dashboard = () => {
       </main>
     );
   }
-
   return (
     <main>
       <Navbar />
