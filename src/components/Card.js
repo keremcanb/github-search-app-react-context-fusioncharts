@@ -5,7 +5,7 @@ import { GithubContext } from '../context/context';
 
 const Card = () => {
   const { githubUser } = useContext(GithubContext);
-  const { avatar_url, html_url, name, company, blog, bio, location, twitter_username } = githubUser;
+  const { avatar_url, html_url, name, company, blog, bio, location, login } = githubUser;
 
   return (
     <Wrapper>
@@ -13,7 +13,7 @@ const Card = () => {
         <img src={avatar_url} alt={name} />
         <div>
           <h4>{name}</h4>
-          <p>@{twitter_username || 'john doe'}</p>
+          <p>@{login}</p>
         </div>
         <a href={html_url}>follow</a>
       </header>

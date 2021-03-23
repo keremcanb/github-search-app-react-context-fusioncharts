@@ -6,22 +6,19 @@ import { GithubContext } from '../context/context';
 const Dashboard = () => {
   const { isLoading } = useContext(GithubContext);
 
-  if (isLoading) {
-    return (
-      <main>
-        <Navbar />
-        <Search />
-        <img src={loadingImage} className="loading-img" alt="loding" />
-      </main>
-    );
-  }
-  return (
+  return !isLoading ? (
     <main>
       <Navbar />
       <Search />
       <Info />
       <User />
       <Repos />
+    </main>
+  ) : (
+    <main>
+      <Navbar />
+      <Search />
+      <img src={loadingImage} className="loading-img" alt="loding" />
     </main>
   );
 };

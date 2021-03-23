@@ -12,7 +12,7 @@ const Login = () => {
         <img src={loginImg} alt="github user" />
         <h1>github user</h1>
         <button className="btn" onClick={loginWithRedirect}>
-          Log In / Sign Up
+          log in / sign up
         </button>
       </div>
     </Wrapper>

@@ -65,7 +65,7 @@ const GithubProvider = ({ children }) => {
   useEffect(checkRequests, []);
 
   useEffect(() => {
-    searchGithubUser('keremcanb');
+    searchGithubUser('wesbos');
   }, []);
 
   return (
